@@ -31,7 +31,20 @@ TARGET_BOOTLOADER_BOARD_NAME := gauguin
 TARGET_NO_BOOTLOADER := true
 
 # Kernel
-BOARD_KERNEL_CMDLINE := console=ttyMSM0,115200,n8 androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.memcg=1 lpm_levels.sleep_disabled=1 msm_rtb.filter=0x237 service_locator.enable=1 androidboot.usbcontroller=a600000.dwc3 swiotlb=2048 cgroup.memory=nokmem,nosocket loop.max_part=7
+BOARD_KERNEL_CMDLINE := \
+	console=ttyMSM0,115200,n8 \
+	androidboot.hardware=qcom \
+	androidboot.console=ttyMSM0 \
+	androidboot.memcg=1 \
+	lpm_levels.sleep_disabled=1 \
+	msm_rtb.filter=0x237 \
+	service_locator.enable=1 \
+	androidboot.usbcontroller=a600000.dwc3 \
+	swiotlb=2048 \
+	cgroup.memory=nokmem,nosocket \
+	loop.max_part=7 \
+	cgroup_disable=pressure
+
 BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_BOOTIMG_HEADER_VERSION := 2
 BOARD_KERNEL_BASE := 0x00000000
@@ -44,6 +57,7 @@ TARGET_KERNEL_SOURCE := kernel/xiaomi/gauguin
 TARGET_KERNEL_CONFIG := vendor/gauguin_defconfig
 TARGET_KERNEL_LLVM_BINUTILS := true
 TARGET_KERNEL_CLANG_PATH := $(shell pwd)/prebuilts/clang/kernel/linux-x86/clang-r416183b
+BOARD_RAMDISK_USE_LZ4 := true
 
 # Platform
 TARGET_BOARD_PLATFORM := lito
@@ -65,7 +79,6 @@ TARGET_SCREEN_DENSITY := 440
 TARGET_USES_COLOR_METADATA := true
 TARGET_USES_DISPLAY_RENDER_INTENTS := true
 TARGET_USES_DRM_PP := true
-TARGET_USES_GRALLOC4 := true
 TARGET_USES_HWC2 := true
 
 # DRM
